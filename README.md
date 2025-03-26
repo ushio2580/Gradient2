@@ -3,7 +3,7 @@
 Herramienta interactiva en Python para calcular gradientes, matrices hessianas y optimización por búsqueda lineal, implementada en Jupyter Notebook.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ushio2580/Gradient2/blob/main/Gradiente_Busqueda_Lineal.ipynb)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ushio2580/Gradient2/main?filepath=Gradiente_Busqueda_Lineal.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg?color=red)](https://mybinder.org/v2/gh/ushio2580/Gradient2/main?filepath=Gradiente_Busqueda_Lineal.ipynb)
 
 ## 📌 Características
 - **Cálculo automático** de gradientes y matrices hessianas.
