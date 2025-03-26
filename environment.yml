@@ -1,0 +1,9 @@
+name: gradient-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - sympy
+  - numpy
+  - matplotlib
+  - jupyter
