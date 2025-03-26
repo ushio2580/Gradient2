@@ -26,10 +26,12 @@ Haz clic en el botón **"Open in Colab"** arriba. No requiere instalación local
    cd Gradient2
 
 ## Instala dependencias:
-pip install -r requirements.txt  # Si usas requirements.txt
+ ```bash
+ pip install -r requirements.txt  # Si usas requirements.txt
 
-##BINDER
-%pip install sympy numpy matplotlib #para ejecutar en binder agregar en la celdas de inizializacion
+## BINDER
+ ```bash
+ %pip install sympy numpy matplotlib #para ejecutar en binder agregar en la celdas de inizializacion
 
 ## Ejecuta Jupyter:
 jupyter notebook Gradiente_Busqueda_Lineal.ipynb
