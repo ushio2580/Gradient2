@@ -6,7 +6,7 @@ This repository contains a Streamlit application that allows users to explore op
 
 1. **Gradient and Hessian Calculation**: Compute and visualize the gradient and Hessian of a user-defined function of two variables.
 2. **Line Search Demonstration**: Perform a line search on a predefined function, showing the search path and verifying the minimum condition.
-
+```
 ---
 
 ## Features
@@ -33,8 +33,8 @@ To run this application, you need the following Python libraries:
 - `numpy` - For numerical computations.
 - `matplotlib` - For creating 3D and contour plots.
 
-Install these dependencies with the following command:
-
+## Install these dependencies with the following command:
+1. **Clone the Repository**:
 ```bash
 pip install streamlit sympy numpy matplotlib
 ```
