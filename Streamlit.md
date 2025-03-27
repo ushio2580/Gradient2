@@ -10,12 +10,6 @@
 - `numpy` - For numerical computations.
 - `matplotlib` - For creating 3D and contour plots.
 
-## Install these dependencies with the following command:
-1. **Requeriment**:
-  ```bash
-  pip install streamlit sympy numpy matplotlib
-  ```
-
 **Python Version**: Requires Python 3.7 or higher.
 
 ---
@@ -73,39 +67,6 @@ Once the application is running, you’ll see two tabs:
   - **3D Surface with Path**: Plots the function surface with the search path.
   - **Contour Plot with Path**: Shows the path on the function’s contours.
   - **Function Value Along Path**: Graphs \(f(t)\) with the optimal point marked.
-
----
-
-## File Structure
-
-- `test2.py`: The main Streamlit application file containing all the code.
-
-*(Note: You can optionally add a `requirements.txt` file by listing the dependencies as shown below.)*
-
----
-
-## Example
-
-- **Gradient and Hessian**: Try entering `1/2*(x2 - x1**2)**2 + (1 - x1)**2` in the first tab to see its gradient, Hessian, and plots.
-- **Line Search**: The second tab automatically demonstrates the line search process with the predefined function and conditions.
-
----
-
-## Optional: Create a `requirements.txt`
-
-If you’d like to include a `requirements.txt` file for easier dependency management, create it with:
-
-```plaintext
-streamlit
-sympy
-numpy
-matplotlib
-```
-
-Then install with:
-```bash
-pip install -r requirements.txt
-```
 
 ---
 
