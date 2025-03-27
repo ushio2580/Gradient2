@@ -1,32 +1,9 @@
 
-```markdown
-# Gradient and Line Search Visualization
-
-This repository contains a Streamlit application that allows users to explore optimization concepts such as gradients, Hessians, and line search methods for functions of two variables. The application is split into two interactive sections:
-
-1. **Gradient and Hessian Calculation**: Compute and visualize the gradient and Hessian of a user-defined function of two variables.
-2. **Line Search Demonstration**: Perform a line search on a predefined function, showing the search path and verifying the minimum condition.
-```
----
-
-## Features
-
-- **Gradient and Hessian Tab**:
-  - Input a custom function of two variables (e.g., `1/2*(x2 - x1**2)**2 + (1 - x1)**2`).
-  - Compute partial derivatives, gradient vector, and Hessian matrix.
-  - Visualize the function with a 3D surface plot and contour plot.
-- **Line Search Tab**:
-  - Uses a predefined function: \( f(x_1, x_2) = x_1^2 + x_2^2 + x_1 x_2 + 4x_1 - x_2 + 1 \).
-  - Starts at \(\vec{x}_0 = [2, -1]^T\) with direction \(\vec{p} = [-1, 1]^T\).
-  - Demonstrates the line search process, including the optimal step size and verification of the minimum.
-  - Includes visualizations: 3D surface plot with path, contour plot with path, and function value along the path.
-- **Mathematical Display**: Equations are rendered in LaTeX for clarity.
-
 ---
 
 ## Requirements
 
-To run this application, you need the following Python libraries:
+### To run this application, you need the following Python libraries:
 
 - `streamlit` - For the interactive web interface.
 - `sympy` - For symbolic mathematics (e.g., derivatives, Hessian).
@@ -34,10 +11,10 @@ To run this application, you need the following Python libraries:
 - `matplotlib` - For creating 3D and contour plots.
 
 ## Install these dependencies with the following command:
-1. **Clone the Repository**:
-```bash
-pip install streamlit sympy numpy matplotlib
-```
+1. **Requeriment**:
+  ```bash
+  pip install streamlit sympy numpy matplotlib
+  ```
 
 **Python Version**: Requires Python 3.7 or higher.
 
