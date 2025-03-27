@@ -70,8 +70,6 @@ Once the application is running, you’ll see two tabs:
 
 ---
 
----
-
 ## Troubleshooting
 
 - **Error Processing Function**: Ensure your function input is valid (e.g., uses `x1` and `x2`, avoids undefined operations).
@@ -93,6 +91,4 @@ This project is licensed under the MIT License. Feel free to use and modify it a
 ---
 
 This application is an excellent tool for learning about gradients, Hessians, and line search methods in optimization. Enjoy experimenting!
-```
----
 
