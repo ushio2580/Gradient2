@@ -93,4 +93,4 @@ This project is licensed under the MIT License. Feel free to use and modify it a
 This application is an excellent tool for learning about gradients, Hessians, and line search methods in optimization. Enjoy experimenting!
 ```
 
----
+
