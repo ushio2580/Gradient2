@@ -156,12 +156,3 @@ This application is an excellent tool for learning about gradients, Hessians, an
 ```
 
 ---
-
-### Explanation
-- **Purpose**: The README clearly describes the project’s goal and features based on the provided `test2.py` code.
-- **Requirements**: Lists the exact libraries used in the code (`streamlit`, `sympy`, `numpy`, `matplotlib`).
-- **How to Run**: Provides detailed, step-by-step instructions to clone, install, and launch the app.
-- **Usage**: Explains how to interact with both tabs, mirroring the functionality in `test2.py`.
-- **Additional Notes**: Includes optional steps (e.g., `requirements.txt`) and troubleshooting tips to enhance usability.
-
-This `README.md` is comprehensive, user-friendly, and ready to be added to the repository! Let me know if you need further tweaks.
