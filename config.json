@@ -1,0 +1,383 @@
+{
+  "log": {
+    "level": "warn",
+    "output": "box.log",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns-remote",
+        "address": "udp://1.1.1.1",
+        "address_resolver": "dns-direct"
+      },
+      {
+        "tag": "dns-trick-direct",
+        "address": "https://sky.rethinkdns.com/",
+        "detour": "direct-fragment"
+      },
+      {
+        "tag": "dns-direct",
+        "address": "223.5.5.5",
+        "address_resolver": "dns-local",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns-local",
+        "address": "local",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns-block",
+        "address": "rcode://success"
+      }
+    ],
+    "rules": [
+      {
+        "domain": [
+          "th.fastsoonlink.com",
+          "pr.fastsoonlink.com",
+          "ru.fastsoonlink.com",
+          "uknode.soon.guru",
+          "jp.fastsoonlink.com",
+          "frk.fastsoonlink.com",
+          "tw.fastsoonlink.com",
+          "kr.fastsoonlink.com",
+          "fr.fastsoonlink.com",
+          "tur.fastsoonlink.com",
+          "idn.fastsoonlink.com",
+          "uk.fastsoonlink.com",
+          "hk.fastsoonlink.com",
+          "us.fastsoonlink.com",
+          "sgp.fastsoonlink.com",
+          "ml.fastsoonlink.com",
+          "vn.fastsoonlink.com"
+        ],
+        "server": "dns-direct"
+      },
+      {
+        "domain": "connectivitycheck.gstatic.com",
+        "server": "dns-remote",
+        "rewrite_ttl": 3000
+      },
+      {
+        "rule_set": [
+          "geoip-cn",
+          "geosite-cn"
+        ],
+        "server": "dns-direct"
+      },
+      {
+        "domain_suffix": ".cn",
+        "server": "dns-direct"
+      }
+    ],
+    "final": "dns-remote",
+    "static_ips": {
+      "sky.rethinkdns.com": [
+        "104.17.148.22",
+        "104.17.147.22",
+        "2606:4700:3030::ac43:d6f6",
+        "2606:4700:3030::6815:533e",
+        "172.67.214.246",
+        "104.21.83.62"
+      ]
+    },
+    "independent_cache": true
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "127.0.0.1",
+      "listen_port": 12334,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "set_system_proxy": true
+    },
+    {
+      "type": "direct",
+      "tag": "dns-in",
+      "listen": "127.0.0.1",
+      "listen_port": 16450
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "香港",
+        "美国",
+        "日本",
+        "新加坡",
+        "马来西亚",
+        "澳大利亚",
+        "泰国",
+        "台湾",
+        "越南",
+        "土耳其",
+        "英国",
+        "波兰",
+        "俄罗斯",
+        "韩国",
+        "印度尼西亚",
+        "法国",
+        "英国（俄罗斯用户专用）"
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "香港",
+        "美国",
+        "日本",
+        "新加坡",
+        "马来西亚",
+        "澳大利亚",
+        "泰国",
+        "台湾",
+        "越南",
+        "土耳其",
+        "英国",
+        "波兰",
+        "俄罗斯",
+        "韩国",
+        "印度尼西亚",
+        "法国",
+        "英国（俄罗斯用户专用）"
+      ],
+      "url": "http://connectivitycheck.gstatic.com/generate_204",
+      "interval": "10m0s",
+      "tolerance": 1,
+      "idle_timeout": "30m0s"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "香港",
+      "server": "hk.fastsoonlink.com",
+      "server_port": 40000,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "美国",
+      "server": "us.fastsoonlink.com",
+      "server_port": 40001,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "日本",
+      "server": "jp.fastsoonlink.com",
+      "server_port": 40003,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "新加坡",
+      "server": "sgp.fastsoonlink.com",
+      "server_port": 40005,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "马来西亚",
+      "server": "ml.fastsoonlink.com",
+      "server_port": 40006,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "澳大利亚",
+      "server": "frk.fastsoonlink.com",
+      "server_port": 40011,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "泰国",
+      "server": "th.fastsoonlink.com",
+      "server_port": 40009,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "台湾",
+      "server": "tw.fastsoonlink.com",
+      "server_port": 40020,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "越南",
+      "server": "vn.fastsoonlink.com",
+      "server_port": 40021,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "土耳其",
+      "server": "tur.fastsoonlink.com",
+      "server_port": 40019,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "英国",
+      "server": "uk.fastsoonlink.com",
+      "server_port": 40008,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "波兰",
+      "server": "pr.fastsoonlink.com",
+      "server_port": 40030,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "俄罗斯",
+      "server": "ru.fastsoonlink.com",
+      "server_port": 40031,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "韩国",
+      "server": "kr.fastsoonlink.com",
+      "server_port": 40032,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "印度尼西亚",
+      "server": "idn.fastsoonlink.com",
+      "server_port": 40033,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "法国",
+      "server": "fr.fastsoonlink.com",
+      "server_port": 40034,
+      "method": "chacha20-ietf-poly1305",
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae"
+    },
+    {
+      "type": "trojan",
+      "tag": "英国（俄罗斯用户专用）",
+      "server": "uknode.soon.guru",
+      "server_port": 40007,
+      "password": "0a8ad528-d9d9-473d-b80b-59c9820612ae",
+      "tls": {
+        "enabled": true,
+        "server_name": "uknode.soon.guru"
+      }
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "direct",
+      "tag": "direct-fragment",
+      "tls_fragment": {
+        "enabled": true,
+        "size": "10-30",
+        "sleep": "2-8"
+      }
+    },
+    {
+      "type": "direct",
+      "tag": "bypass"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "domain": ".cn",
+        "outbound": "direct"
+      },
+      {
+        "rule_set": [
+          "geoip-cn",
+          "geosite-cn"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "inbound": "dns-in",
+        "outbound": "dns-out"
+      },
+      {
+        "port": 53,
+        "outbound": "dns-out"
+      },
+      {
+        "clash_mode": "Direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "Global",
+        "outbound": "select"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "geoip-cn",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/country/geoip-cn.srs",
+        "update_interval": "120h0m0s"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-cn",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/country/geosite-cn.srs",
+        "update_interval": "120h0m0s"
+      }
+    ],
+    "final": "select",
+    "auto_detect_interface": true,
+    "override_android_vpn": true
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "clash.db"
+    },
+    "clash_api": {
+      "external_controller": "127.0.0.1:16756",
+      "secret": "B5J4AXLpjxJ-2Dh0"
+    }
+  }
+}
